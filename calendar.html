@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auburn High School MA | Calendar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --black: #0b0b0f;
+        --ink: #12121a;
+        --moon: #f4f2ef;
+        --mist: #c7c2bc;
+        --gold: #f0c56e;
+        --gold-soft: rgba(240, 197, 110, 0.2);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--black);
+        color: var(--moon);
+        line-height: 1.6;
+        animation: page-fade 1s ease both;
+      }
+
+      @keyframes page-fade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      header {
+        padding: 32px 7vw 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .crest {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid var(--gold);
+        display: grid;
+        place-items: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        color: var(--gold);
+        letter-spacing: 1px;
+      }
+
+      .brand h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+      }
+
+      nav a {
+        color: var(--mist);
+        text-decoration: none;
+        margin-left: 28px;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--moon);
+      }
+
+      main {
+        padding: 40px 7vw 80px;
+        display: grid;
+        gap: 40px;
+      }
+
+      .hero {
+        display: grid;
+        gap: 20px;
+      }
+
+      .hero h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.6rem, 4vw, 3.6rem);
+      }
+
+      .hero p {
+        color: var(--mist);
+        max-width: 620px;
+      }
+
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 24px;
+      }
+
+      .month-card {
+        border-radius: 20px;
+        padding: 24px;
+        background: linear-gradient(150deg, rgba(18, 18, 26, 0.95), rgba(10, 10, 15, 0.95));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .month-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+      }
+
+      .month-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+      }
+
+      .event {
+        display: grid;
+        gap: 6px;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .event:last-child {
+        border-bottom: none;
+      }
+
+      .event span {
+        font-size: 0.85rem;
+        color: var(--gold);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .event strong {
+        font-weight: 600;
+      }
+
+      .note {
+        padding: 18px 22px;
+        border-radius: 16px;
+        background: rgba(240, 197, 110, 0.08);
+        border: 1px solid rgba(240, 197, 110, 0.2);
+        color: var(--mist);
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--moon);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+      }
+
+      footer {
+        padding: 40px 7vw;
+        color: var(--mist);
+        font-size: 0.85rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      @media (max-width: 700px) {
+        nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <div class="crest">AHS</div>
+        <h1>Auburn High School, MA</h1>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#calendar">Calendar</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="calendar">
+        <h2>School Calendar</h2>
+        <p>
+          Key dates inspired by Auburn High School MA’s official calendar. Use this as the
+          polished front-end view, and swap in the district’s published dates as needed.
+        </p>
+        <a class="back-link" href="index.html">← Back to intro</a>
+      </section>
+
+      <section class="calendar-grid">
+        <article class="month-card">
+          <h3>September</h3>
+          <div class="event">
+            <span>Sep 3</span>
+            <strong>First Day of School</strong>
+            <div>Freshman orientation & opening ceremonies.</div>
+          </div>
+          <div class="event">
+            <span>Sep 16</span>
+            <strong>Curriculum Night</strong>
+            <div>Meet faculty and preview course pathways.</div>
+          </div>
+        </article>
+        <article class="month-card">
+          <h3>October</h3>
+          <div class="event">
+            <span>Oct 11</span>
+            <strong>Early Release</strong>
+            <div>Professional development afternoon.</div>
+          </div>
+          <div class="event">
+            <span>Oct 25</span>
+            <strong>Fall Arts Showcase</strong>
+            <div>Performing arts and gallery night.</div>
+          </div>
+        </article>
+        <article class="month-card">
+          <h3>November</h3>
+          <div class="event">
+            <span>Nov 7</span>
+            <strong>Parent-Teacher Conferences</strong>
+            <div>Virtual and in-person appointment slots.</div>
+          </div>
+          <div class="event">
+            <span>Nov 28-29</span>
+            <strong>Thanksgiving Break</strong>
+            <div>No school district-wide.</div>
+          </div>
+        </article>
+        <article class="month-card">
+          <h3>December</h3>
+          <div class="event">
+            <span>Dec 12</span>
+            <strong>Winter Chorus Concert</strong>
+            <div>Evening performance in the auditorium.</div>
+          </div>
+          <div class="event">
+            <span>Dec 23 - Jan 1</span>
+            <strong>Winter Recess</strong>
+            <div>Schools closed for the holidays.</div>
+          </div>
+        </article>
+      </section>
+
+      <section class="note">
+        For official dates, holiday closures, and athletic schedules, please reference the
+        Auburn Public Schools calendar and the Auburn High School announcements page.
+      </section>
+    </main>
+
+    <footer>
+      <div>148 Auburn Street · Auburn, MA</div>
+      <div>Connect with admissions@auburnhsma.edu</div>
+    </footer>
+  </body>
+</html>

@@ -37,6 +37,16 @@
         background: var(--black);
         color: var(--moon);
         line-height: 1.6;
+        animation: page-fade 1s ease both;
+      }
+
+      @keyframes page-fade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       .page {
@@ -335,6 +345,7 @@
           <a href="#academics">Academics</a>
           <a href="#student-life">Student Life</a>
           <a href="#admissions">Admissions</a>
+          <a href="calendar.html">Calendar</a>
           <a href="#news">News</a>
         </nav>
       </header>
@@ -348,7 +359,7 @@
             modern spaces, and a community that knows every student by name.
           </p>
           <div class="cta-row">
-            <button class="btn primary">Schedule a Tour</button>
+            <a class="btn primary" href="calendar.html">School Calendar</a>
             <button class="btn ghost">Explore Programs</button>
           </div>
           <div class="scroll-cue">
