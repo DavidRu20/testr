@@ -115,52 +115,111 @@
         max-width: 620px;
       }
 
-      .calendar-grid {
+      .calendar-layout {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 24px;
+        grid-template-columns: minmax(0, 1.6fr) minmax(240px, 0.8fr);
+        gap: 28px;
+        align-items: start;
       }
 
-      .month-card {
-        border-radius: 20px;
+      .calendar-card,
+      .countdown-card {
+        border-radius: 22px;
         padding: 24px;
         background: linear-gradient(150deg, rgba(18, 18, 26, 0.95), rgba(10, 10, 15, 0.95));
         border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
       }
 
-      .month-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+      .calendar-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 20px;
       }
 
-      .month-card h3 {
+      .calendar-header h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+      }
+
+      .calendar-header span {
+        color: var(--mist);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.75rem;
+      }
+
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .calendar-weekday {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.7rem;
+        color: var(--mist);
+      }
+
+      .calendar-day {
+        min-height: 96px;
+        border-radius: 16px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        display: grid;
+        gap: 6px;
+        align-content: start;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .calendar-day:hover {
+        background: rgba(255, 255, 255, 0.06);
+        transform: translateY(-2px);
+      }
+
+      .calendar-day.is-muted {
+        opacity: 0.35;
+      }
+
+      .calendar-day.is-highlight {
+        background: rgba(240, 197, 110, 0.12);
+        border-color: rgba(240, 197, 110, 0.35);
+      }
+
+      .calendar-day span {
+        font-weight: 600;
+        color: var(--gold);
+      }
+
+      .calendar-event {
+        font-size: 0.8rem;
+        color: var(--mist);
+      }
+
+      .countdown-card h4 {
         font-family: "Playfair Display", serif;
         font-size: 1.4rem;
         margin-bottom: 12px;
       }
 
-      .event {
+      .countdown {
         display: grid;
-        gap: 6px;
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        gap: 12px;
+        margin-top: 16px;
       }
 
-      .event:last-child {
-        border-bottom: none;
-      }
-
-      .event span {
-        font-size: 0.85rem;
-        color: var(--gold);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .event strong {
-        font-weight: 600;
+      .countdown-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 14px;
+        border-radius: 12px;
+        background: rgba(240, 197, 110, 0.08);
+        border: 1px solid rgba(240, 197, 110, 0.2);
+        font-size: 0.9rem;
       }
 
       .note {
@@ -196,6 +255,10 @@
         nav {
           display: none;
         }
+
+        .calendar-layout {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -221,59 +284,32 @@
         <a class="back-link" href="index.html">← Back to intro</a>
       </section>
 
-      <section class="calendar-grid">
-        <article class="month-card">
-          <h3>September</h3>
-          <div class="event">
-            <span>Sep 3</span>
-            <strong>First Day of School</strong>
-            <div>Freshman orientation & opening ceremonies.</div>
+      <section class="calendar-layout">
+        <article class="calendar-card" aria-labelledby="calendar-title">
+          <div class="calendar-header">
+            <h3 id="calendar-title">June Calendar</h3>
+            <span id="calendar-year">Current Year</span>
           </div>
-          <div class="event">
-            <span>Sep 16</span>
-            <strong>Curriculum Night</strong>
-            <div>Meet faculty and preview course pathways.</div>
-          </div>
-        </article>
-        <article class="month-card">
-          <h3>October</h3>
-          <div class="event">
-            <span>Oct 11</span>
-            <strong>Early Release</strong>
-            <div>Professional development afternoon.</div>
-          </div>
-          <div class="event">
-            <span>Oct 25</span>
-            <strong>Fall Arts Showcase</strong>
-            <div>Performing arts and gallery night.</div>
+          <div class="calendar-grid" id="calendar-grid" aria-live="polite">
+            <div class="calendar-weekday">Sun</div>
+            <div class="calendar-weekday">Mon</div>
+            <div class="calendar-weekday">Tue</div>
+            <div class="calendar-weekday">Wed</div>
+            <div class="calendar-weekday">Thu</div>
+            <div class="calendar-weekday">Fri</div>
+            <div class="calendar-weekday">Sat</div>
           </div>
         </article>
-        <article class="month-card">
-          <h3>November</h3>
-          <div class="event">
-            <span>Nov 7</span>
-            <strong>Parent-Teacher Conferences</strong>
-            <div>Virtual and in-person appointment slots.</div>
+        <aside class="countdown-card">
+          <h4>Countdown to Last Day</h4>
+          <p>Tracking the final day of school: June 17.</p>
+          <div class="countdown" id="countdown">
+            <div class="countdown-item"><span>Days</span><strong id="days">--</strong></div>
+            <div class="countdown-item"><span>Hours</span><strong id="hours">--</strong></div>
+            <div class="countdown-item"><span>Minutes</span><strong id="minutes">--</strong></div>
+            <div class="countdown-item"><span>Seconds</span><strong id="seconds">--</strong></div>
           </div>
-          <div class="event">
-            <span>Nov 28-29</span>
-            <strong>Thanksgiving Break</strong>
-            <div>No school district-wide.</div>
-          </div>
-        </article>
-        <article class="month-card">
-          <h3>December</h3>
-          <div class="event">
-            <span>Dec 12</span>
-            <strong>Winter Chorus Concert</strong>
-            <div>Evening performance in the auditorium.</div>
-          </div>
-          <div class="event">
-            <span>Dec 23 - Jan 1</span>
-            <strong>Winter Recess</strong>
-            <div>Schools closed for the holidays.</div>
-          </div>
-        </article>
+        </aside>
       </section>
 
       <section class="note">
@@ -286,5 +322,81 @@
       <div>148 Auburn Street · Auburn, MA</div>
       <div>Connect with admissions@auburnhsma.edu</div>
     </footer>
+    <script>
+      const currentYear = new Date().getFullYear();
+      const calendarYearLabel = document.getElementById("calendar-year");
+      const calendarGrid = document.getElementById("calendar-grid");
+
+      calendarYearLabel.textContent = currentYear;
+
+      const juneIndex = 5;
+      const firstDay = new Date(currentYear, juneIndex, 1);
+      const lastDay = new Date(currentYear, juneIndex + 1, 0);
+      const startDay = firstDay.getDay();
+      const totalDays = lastDay.getDate();
+
+      const events = {
+        3: "Final exams begin",
+        7: "Senior awards night",
+        11: "Graduation rehearsal",
+        17: "Last day of school",
+      };
+
+      const createDayCell = (dayNumber, isMuted = false) => {
+        const cell = document.createElement("div");
+        cell.className = `calendar-day${isMuted ? " is-muted" : ""}`;
+        if (dayNumber === 17 && !isMuted) {
+          cell.classList.add("is-highlight");
+        }
+        const number = document.createElement("span");
+        number.textContent = dayNumber;
+        cell.appendChild(number);
+        if (events[dayNumber]) {
+          const eventText = document.createElement("div");
+          eventText.className = "calendar-event";
+          eventText.textContent = events[dayNumber];
+          cell.appendChild(eventText);
+        }
+        return cell;
+      };
+
+      for (let i = 0; i < startDay; i += 1) {
+        calendarGrid.appendChild(createDayCell("—", true));
+      }
+
+      for (let day = 1; day <= totalDays; day += 1) {
+        calendarGrid.appendChild(createDayCell(day));
+      }
+
+      const totalCells = startDay + totalDays;
+      const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+      for (let i = 0; i < remainingCells; i += 1) {
+        calendarGrid.appendChild(createDayCell("—", true));
+      }
+
+      const targetDate = new Date(currentYear, 5, 17, 23, 59, 59);
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+
+      const updateCountdown = () => {
+        const now = new Date();
+        const diff = Math.max(targetDate - now, 0);
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        daysEl.textContent = days;
+        hoursEl.textContent = String(hours).padStart(2, "0");
+        minutesEl.textContent = String(minutes).padStart(2, "0");
+        secondsEl.textContent = String(seconds).padStart(2, "0");
+      };
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
   </body>
 </html>
