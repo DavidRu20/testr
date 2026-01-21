@@ -49,7 +49,7 @@
       }
 
       header {
-        padding: 32px 7vw 20px;
+        padding: 28px 7vw 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -84,7 +84,7 @@
         color: var(--mist);
         text-decoration: none;
         margin-left: 28px;
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         text-transform: uppercase;
         letter-spacing: 2px;
         transition: color 0.3s ease;
@@ -94,36 +94,22 @@
         color: var(--moon);
       }
 
-      main {
-        padding: 40px 7vw 80px;
-        display: grid;
-        gap: 48px;
-      }
-
       .hero {
-        padding: 40px;
-        border-radius: 28px;
-        background: linear-gradient(150deg, rgba(20, 20, 30, 0.96), rgba(10, 10, 15, 0.96));
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        padding: 80px 7vw 60px;
         display: grid;
-        gap: 18px;
+        gap: 24px;
+        background: radial-gradient(circle at 80% 20%, rgba(240, 197, 110, 0.2), transparent 55%),
+          linear-gradient(150deg, rgba(20, 20, 30, 0.95), rgba(10, 10, 15, 0.95));
       }
 
       .hero h2 {
         font-family: "Playfair Display", serif;
-        font-size: clamp(2.6rem, 4vw, 3.6rem);
+        font-size: clamp(2.8rem, 4vw, 4rem);
       }
 
       .hero p {
         color: var(--mist);
-        max-width: 620px;
-      }
-
-      .pill-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+        max-width: 560px;
       }
 
       .pill {
@@ -134,9 +120,69 @@
         font-size: 0.7rem;
         letter-spacing: 2px;
         color: var(--mist);
+        width: fit-content;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border-radius: 999px;
+        border: 1px solid var(--moon);
+        background: transparent;
+        color: var(--moon);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.75rem;
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+
+      .btn.primary {
+        background: var(--gold);
+        color: #111016;
+        border-color: transparent;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .lookbook-grid {
+        padding: 50px 7vw;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .lookbook-card {
+        border-radius: 24px;
+        min-height: 240px;
+        padding: 24px;
+        background: linear-gradient(150deg, rgba(18, 18, 26, 0.9), rgba(47, 34, 58, 0.95));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: grid;
+        align-content: space-between;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+      }
+
+      .lookbook-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .lookbook-card span {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.7rem;
+        color: var(--gold);
       }
 
       .section-title {
+        padding: 0 7vw;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -148,7 +194,7 @@
         font-size: 1.6rem;
       }
 
-      .link {
+      .section-title a {
         color: var(--mist);
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -156,112 +202,45 @@
         text-decoration: none;
       }
 
-      .category-grid {
+      .product-grid {
+        padding: 24px 7vw 60px;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 18px;
       }
 
-      .category-card {
+      .product-tile {
         border-radius: 20px;
-        padding: 22px;
-        background: linear-gradient(140deg, rgba(18, 18, 26, 0.96), rgba(12, 12, 18, 0.96));
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        transition: transform 0.35s ease, box-shadow 0.35s ease;
-      }
-
-      .category-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-      }
-
-      .category-card span {
-        display: block;
-        margin-top: 10px;
-        color: var(--mist);
-      }
-
-      .product-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-        gap: 22px;
-      }
-
-      .product-card {
-        border-radius: 22px;
         padding: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
         background: rgba(18, 18, 26, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         display: grid;
         gap: 12px;
-        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
-      .product-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+      .product-tile:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
       }
 
       .product-image {
         border-radius: 18px;
-        height: 170px;
+        height: 180px;
         background: linear-gradient(140deg, rgba(240, 197, 110, 0.35), rgba(255, 255, 255, 0.06));
         border: 1px solid rgba(240, 197, 110, 0.25);
       }
 
-      .product-card h4 {
-        font-size: 1rem;
-        font-weight: 600;
-      }
-
-      .price-row {
+      .product-meta {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         color: var(--mist);
       }
 
-      .btn {
-        padding: 10px 16px;
-        border-radius: 999px;
-        border: 1px solid var(--moon);
-        background: transparent;
-        color: var(--moon);
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 0.7rem;
-        transition: transform 0.3s ease;
-      }
-
-      .btn:hover {
-        transform: translateY(-2px);
-      }
-
-      .lookbook {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-      }
-
-      .lookbook-card {
-        border-radius: 22px;
-        padding: 22px;
-        background: linear-gradient(130deg, rgba(47, 34, 58, 0.9), rgba(12, 12, 18, 0.95));
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        display: grid;
-        gap: 12px;
-      }
-
-      .lookbook-card span {
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 0.75rem;
-        color: var(--gold);
-      }
-
       .cta-strip {
-        padding: 26px 32px;
+        margin: 20px 7vw 60px;
+        padding: 28px 32px;
         border-radius: 999px;
         background: var(--glass);
         display: flex;
@@ -305,118 +284,87 @@
       </nav>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="pill-row">
-          <div class="pill">Spirit Wear</div>
-          <div class="pill">Campus Store</div>
-          <div class="pill">Limited Drops</div>
-        </div>
-        <h2>Shop the Auburn High essentials.</h2>
-        <p>
-          A curated selection of spirit wear, school supplies, and community favorites with a
-          boutique feel. Every purchase supports student programs and campus initiatives.
-        </p>
-      </section>
+    <section class="hero">
+      <span class="pill">Campus Store</span>
+      <h2>Editorial drops, campus essentials.</h2>
+      <p>
+        A Zara-inspired storefront for Auburn High—sleek collections, minimal layouts, and a
+        curated campus edit supporting student programs.
+      </p>
+      <div class="hero-actions">
+        <button class="btn primary">Shop new arrivals</button>
+        <button class="btn">View lookbook</button>
+      </div>
+    </section>
 
-      <section>
-        <div class="section-title">
-          <h3>Collections</h3>
-          <a class="link" href="#">See all</a>
-        </div>
-        <div class="category-grid">
-          <article class="category-card">
-            <h4>Spirit Wear</h4>
-            <span>Varsity hoodies, tees, and fan favorites.</span>
-          </article>
-          <article class="category-card">
-            <h4>Campus Gear</h4>
-            <span>Notebooks, planners, and study essentials.</span>
-          </article>
-          <article class="category-card">
-            <h4>Event Tickets</h4>
-            <span>Plays, concerts, and championship games.</span>
-          </article>
-          <article class="category-card">
-            <h4>Alumni Shop</h4>
-            <span>Limited drops and heritage collections.</span>
-          </article>
-        </div>
-      </section>
+    <div class="section-title">
+      <h3>Lookbook</h3>
+      <a href="#">Seasonal edit</a>
+    </div>
+    <section class="lookbook-grid">
+      <article class="lookbook-card">
+        <span>Studio Set</span>
+        <h4>Layered neutrals for campus mornings.</h4>
+        <p>Mix varsity textures with minimal accessories.</p>
+      </article>
+      <article class="lookbook-card">
+        <span>Friday Lights</span>
+        <h4>Game-day essentials curated for fans.</h4>
+        <p>Scarves, caps, and stadium-ready kits.</p>
+      </article>
+      <article class="lookbook-card">
+        <span>Heritage Drop</span>
+        <h4>Limited alumni collection, reissued.</h4>
+        <p>Classic Auburn gold with a modern cut.</p>
+      </article>
+    </section>
 
-      <section>
-        <div class="section-title">
-          <h3>Featured Picks</h3>
-          <a class="link" href="#">New arrivals</a>
+    <div class="section-title">
+      <h3>Featured picks</h3>
+      <a href="#">View all</a>
+    </div>
+    <section class="product-grid">
+      <article class="product-tile">
+        <div class="product-image"></div>
+        <h4>Midnight Crest Hoodie</h4>
+        <div class="product-meta">
+          <span>$52</span>
+          <span>Limited</span>
         </div>
-        <div class="product-grid">
-          <article class="product-card">
-            <div class="product-image"></div>
-            <h4>Midnight Crest Hoodie</h4>
-            <div class="price-row">
-              <span>$52</span>
-              <button class="btn">Add to bag</button>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-image"></div>
-            <h4>Studio Tote + Laptop Sleeve</h4>
-            <div class="price-row">
-              <span>$34</span>
-              <button class="btn">Add to bag</button>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-image"></div>
-            <h4>Championship Cap</h4>
-            <div class="price-row">
-              <span>$24</span>
-              <button class="btn">Add to bag</button>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-image"></div>
-            <h4>Gold Foil Yearbook</h4>
-            <div class="price-row">
-              <span>$75</span>
-              <button class="btn">Reserve</button>
-            </div>
-          </article>
+      </article>
+      <article class="product-tile">
+        <div class="product-image"></div>
+        <h4>Studio Tote + Sleeve</h4>
+        <div class="product-meta">
+          <span>$34</span>
+          <span>New</span>
         </div>
-      </section>
+      </article>
+      <article class="product-tile">
+        <div class="product-image"></div>
+        <h4>Championship Cap</h4>
+        <div class="product-meta">
+          <span>$24</span>
+          <span>Restock</span>
+        </div>
+      </article>
+      <article class="product-tile">
+        <div class="product-image"></div>
+        <h4>Gold Foil Yearbook</h4>
+        <div class="product-meta">
+          <span>$75</span>
+          <span>Preorder</span>
+        </div>
+      </article>
+    </section>
 
-      <section>
-        <div class="section-title">
-          <h3>Lookbook</h3>
-          <a class="link" href="#">Seasonal edit</a>
-        </div>
-        <div class="lookbook">
-          <article class="lookbook-card">
-            <span>Studio Set</span>
-            <h4>Layered neutrals for campus mornings.</h4>
-            <p>Mix varsity textures with minimal accessories.</p>
-          </article>
-          <article class="lookbook-card">
-            <span>Friday Lights</span>
-            <h4>Game-day essentials curated for fans.</h4>
-            <p>Scarves, caps, and stadium-ready kits.</p>
-          </article>
-          <article class="lookbook-card">
-            <span>Heritage Drop</span>
-            <h4>Limited alumni collection, reissued.</h4>
-            <p>Classic Auburn gold with a modern cut.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="cta-strip">
-        <div>
-          <h4>Support student programs with every purchase.</h4>
-          <p>Need help? The campus store team is here Monday–Friday.</p>
-        </div>
-        <button class="btn">Contact the store</button>
-      </section>
-    </main>
+    <section class="cta-strip">
+      <div>
+        <h4>Support student programs with every purchase.</h4>
+        <p>Need help? The campus store team is here Monday–Friday.</p>
+      </div>
+      <button class="btn">Contact the store</button>
+    </section>
 
     <footer>
       <div>148 Auburn Street · Auburn, MA</div>
