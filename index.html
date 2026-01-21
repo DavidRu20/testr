@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auburn High School MA | Intro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --black: #0b0b0f;
+        --ink: #12121a;
+        --moon: #f4f2ef;
+        --mist: #c7c2bc;
+        --gold: #f0c56e;
+        --gold-soft: rgba(240, 197, 110, 0.2);
+        --accent: #6b6bff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--black);
+        color: var(--moon);
+        line-height: 1.6;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: radial-gradient(circle at 20% 20%, rgba(107, 107, 255, 0.18), transparent 55%),
+          radial-gradient(circle at 80% 10%, rgba(240, 197, 110, 0.2), transparent 45%),
+          var(--black);
+      }
+
+      header {
+        padding: 32px 7vw 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .crest {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid var(--gold);
+        display: grid;
+        place-items: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        color: var(--gold);
+        letter-spacing: 1px;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .crest:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(240, 197, 110, 0.25);
+      }
+
+      .brand h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+      }
+
+      nav a {
+        color: var(--mist);
+        text-decoration: none;
+        margin-left: 28px;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--moon);
+      }
+
+      nav a::after {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 0;
+        background: var(--gold);
+        transition: width 0.3s ease;
+        margin-top: 6px;
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 48px;
+        padding: 80px 7vw 60px;
+        align-items: center;
+      }
+
+      .hero h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.8rem, 4vw, 4rem);
+        line-height: 1.1;
+      }
+
+      .hero p {
+        margin-top: 24px;
+        color: var(--mist);
+        max-width: 520px;
+      }
+
+      .cta-row {
+        margin-top: 32px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .btn {
+        padding: 14px 28px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease,
+          color 0.3s ease, border-color 0.3s ease;
+      }
+
+      .btn.primary {
+        background: var(--gold);
+        color: #111016;
+        box-shadow: 0 12px 40px rgba(240, 197, 110, 0.25);
+      }
+
+      .btn.ghost {
+        border-color: var(--moon);
+        color: var(--moon);
+        background: transparent;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .showcase {
+        border-radius: 24px;
+        background: linear-gradient(135deg, rgba(20, 20, 30, 0.9), rgba(10, 10, 15, 0.9));
+        padding: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .showcase:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+      }
+
+      .showcase h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 18px;
+        margin-top: 24px;
+      }
+
+      .metric {
+        padding: 18px;
+        border-radius: 18px;
+        background: rgba(240, 197, 110, 0.08);
+        border: 1px solid rgba(240, 197, 110, 0.2);
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+
+      .metric:hover {
+        transform: translateY(-4px);
+        background: rgba(240, 197, 110, 0.15);
+      }
+
+      .metric span {
+        font-size: 1.4rem;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 6px;
+        color: var(--gold);
+      }
+
+      .strip {
+        margin: 0 7vw;
+        padding: 32px 40px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+        align-items: center;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .strip:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-4px);
+      }
+
+      .strip p {
+        color: var(--mist);
+      }
+
+      .pill {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+      }
+
+      footer {
+        margin-top: auto;
+        padding: 40px 7vw;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        color: var(--mist);
+        font-size: 0.85rem;
+      }
+
+      .scroll-cue {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 32px;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--mist);
+      }
+
+      .scroll-cue span {
+        display: inline-block;
+        width: 26px;
+        height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 999px;
+        position: relative;
+      }
+
+      .scroll-cue span::after {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold);
+        animation: scroll-bounce 1.6s ease-in-out infinite;
+      }
+
+      @keyframes scroll-bounce {
+        0%,
+        100% {
+          transform: translate(-50%, 0);
+        }
+        50% {
+          transform: translate(-50%, 12px);
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 700px) {
+        nav {
+          display: none;
+        }
+
+        .strip {
+          border-radius: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="reveal">
+        <div class="brand">
+          <div class="crest">AHS</div>
+          <h1>Auburn High School, MA</h1>
+        </div>
+        <nav>
+          <a href="#academics">Academics</a>
+          <a href="#student-life">Student Life</a>
+          <a href="#admissions">Admissions</a>
+          <a href="#news">News</a>
+        </nav>
+      </header>
+
+      <section class="hero reveal">
+        <div class="reveal">
+          <div class="pill">Auburn, Massachusetts</div>
+          <h2>Elevated learning, tailored for tomorrow.</h2>
+          <p>
+            Auburn High School blends academic excellence with a boutique feel—immersive programs,
+            modern spaces, and a community that knows every student by name.
+          </p>
+          <div class="cta-row">
+            <button class="btn primary">Schedule a Tour</button>
+            <button class="btn ghost">Explore Programs</button>
+          </div>
+          <div class="scroll-cue">
+            <span aria-hidden="true"></span>
+            Scroll for more
+          </div>
+        </div>
+        <div class="showcase reveal" id="academics">
+          <h3>Signature Experiences</h3>
+          <p>
+            Honors pathways, STEM labs, and creative studios designed for ambitious learners.
+            Thoughtful guidance pairs each student with mentors and purposeful internships.
+          </p>
+          <div class="metrics">
+            <div class="metric">
+              <span>24</span>
+              AP & Honors Tracks
+            </div>
+            <div class="metric">
+              <span>1:1</span>
+              Personalized Advising
+            </div>
+            <div class="metric">
+              <span>98%</span>
+              College & Career Ready
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="strip reveal" id="student-life">
+        <div>
+          <h3>Student Life, Curated</h3>
+          <p>Leadership councils, championship athletics, and arts that light up the city.</p>
+        </div>
+        <div class="pill" id="admissions">Now enrolling for 2025</div>
+        <button class="btn ghost" id="news">View the Lookbook</button>
+      </section>
+
+      <footer class="reveal">
+        <div>148 Auburn Street · Auburn, MA</div>
+        <div>Connect with admissions@auburnhsma.edu</div>
+      </footer>
+    </div>
+    <script>
+      const revealTargets = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      revealTargets.forEach((target) => revealObserver.observe(target));
+    </script>
+  </body>
+</html>
