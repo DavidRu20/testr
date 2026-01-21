@@ -131,15 +131,9 @@
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
       }
 
-      .months-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
-      }
-
       .calendar-header {
         display: flex;
-        align-items: baseline;
+        align-items: center;
         justify-content: space-between;
         gap: 16px;
         margin-bottom: 20px;
@@ -155,6 +149,29 @@
         text-transform: uppercase;
         letter-spacing: 2px;
         font-size: 0.75rem;
+      }
+
+      .calendar-nav {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .calendar-nav button {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: transparent;
+        color: var(--moon);
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .calendar-nav button:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
       }
 
       .calendar-grid {
@@ -199,6 +216,11 @@
       .calendar-day span {
         font-weight: 600;
         color: var(--gold);
+      }
+
+      .calendar-event {
+        font-size: 0.78rem;
+        color: var(--mist);
       }
 
       .countdown-card h4 {
@@ -290,7 +312,27 @@
       </section>
 
       <section class="calendar-layout">
-        <div class="months-grid" id="months-grid" aria-live="polite"></div>
+        <article class="calendar-card" aria-labelledby="calendar-title">
+          <div class="calendar-header">
+            <div>
+              <h3 id="calendar-title">Month</h3>
+              <span id="calendar-year">Year</span>
+            </div>
+            <div class="calendar-nav">
+              <button type="button" id="prev-month" aria-label="Previous month">‹</button>
+              <button type="button" id="next-month" aria-label="Next month">›</button>
+            </div>
+          </div>
+          <div class="calendar-grid" id="calendar-grid" aria-live="polite">
+            <div class="calendar-weekday">Sun</div>
+            <div class="calendar-weekday">Mon</div>
+            <div class="calendar-weekday">Tue</div>
+            <div class="calendar-weekday">Wed</div>
+            <div class="calendar-weekday">Thu</div>
+            <div class="calendar-weekday">Fri</div>
+            <div class="calendar-weekday">Sat</div>
+          </div>
+        </article>
         <aside class="countdown-card">
           <h4>Countdown to Last Day</h4>
           <p>Tracking the final day of school: June 17.</p>
@@ -319,7 +361,6 @@
     </footer>
     <script>
       const currentYear = new Date().getFullYear();
-      const monthsGrid = document.getElementById("months-grid");
       const monthNames = [
         "January",
         "February",
@@ -335,7 +376,79 @@
         "December",
       ];
 
-      const createDayCell = (dayNumber, isMuted = false, isHighlight = false) => {
+      const calendarTitle = document.getElementById("calendar-title");
+      const calendarYearLabel = document.getElementById("calendar-year");
+      const calendarGrid = document.getElementById("calendar-grid");
+      const prevMonthButton = document.getElementById("prev-month");
+      const nextMonthButton = document.getElementById("next-month");
+
+      const events = {
+        8: {
+          31: ["Professional Development Day for Staff"],
+        },
+        9: {
+          1: ["Professional Development Day for Staff"],
+          2: ["First Day of School for Students"],
+          4: ["No School"],
+          7: ["Labor Day - No School"],
+          11: ["Rosh Hashanah Begins"],
+          20: ["Yom Kippur Begins"],
+        },
+        10: {
+          8: ["Half Day for Students - Prof. Dev for Teachers"],
+          9: ["No School for Students - Prof. Dev for Teachers"],
+          12: ["Indigenous Peoples' Day - No School"],
+        },
+        11: {
+          10: ["Parent Teacher Conferences - K-8 1/2 day", "High School full day"],
+          11: ["Veterans Day Observed - No School"],
+          25: ["Half Day for students and staff"],
+          26: ["Thanksgiving Recess", "End of Trimester 1"],
+        },
+        12: {
+          4: ["Hanukkah Begins"],
+          23: ["Half Day for students and staff"],
+          24: ["Winter Recess (12/24 - 1/1)"],
+          25: ["Christmas"],
+          26: ["Kwanzaa Begins"],
+        },
+        1: {
+          1: ["New Year's Day - No School"],
+          15: ["Half Day for Students - Prof Dev for Teachers"],
+          18: ["Martin Luther King Jr. Day - No School"],
+        },
+        2: {
+          15: ["President's Day - No School"],
+          16: ["February Vacation (2/16 - 2/19)"],
+          17: ["February Vacation (2/16 - 2/19)", "Ramadan Begins"],
+          18: ["February Vacation (2/16 - 2/19)"],
+          19: ["February Vacation (2/16 - 2/19)"],
+        },
+        3: {
+          9: ["Eid Al-Fitr"],
+          18: ["Half Day for Students - Prof Dev for Teachers"],
+          19: ["No School for Students - Prof Dev for Teachers"],
+          28: ["Easter Sunday", "End of Trimester 2"],
+        },
+        4: {
+          19: ["Patriots' Day - No School"],
+          20: ["April Vacation (4/20 - 4/23)"],
+          21: ["April Vacation (4/20 - 4/23)", "Passover Begins"],
+          22: ["April Vacation (4/20 - 4/23)"],
+          23: ["April Vacation (4/20 - 4/23)"],
+        },
+        5: {
+          7: ["No School Kindergarten Only - Kindergarten Screening"],
+          14: ["Half Day for Students - Prof Dev for Teachers"],
+          31: ["Memorial Day - No School", "AHS Graduation"],
+        },
+        6: {
+          17: ["Half Day - Last Day for Students & Staff"],
+          18: ["Juneteenth observed"],
+        },
+      };
+
+      const createDayCell = (dayNumber, isMuted = false, isHighlight = false, dayEvents = []) => {
         const cell = document.createElement("div");
         cell.className = `calendar-day${isMuted ? " is-muted" : ""}`;
         if (isHighlight && !isMuted) {
@@ -344,63 +457,60 @@
         const number = document.createElement("span");
         number.textContent = dayNumber;
         cell.appendChild(number);
+        if (!isMuted && dayEvents.length) {
+          dayEvents.forEach((event) => {
+            const eventText = document.createElement("div");
+            eventText.className = "calendar-event";
+            eventText.textContent = event;
+            cell.appendChild(eventText);
+          });
+        }
         return cell;
       };
 
-      const createMonthCard = (monthIndex) => {
-        const firstDay = new Date(currentYear, monthIndex, 1);
-        const lastDay = new Date(currentYear, monthIndex + 1, 0);
+      let currentMonthIndex = new Date().getMonth();
+
+      const renderMonth = () => {
+        calendarTitle.textContent = monthNames[currentMonthIndex];
+        calendarYearLabel.textContent = currentYear;
+        const firstDay = new Date(currentYear, currentMonthIndex, 1);
+        const lastDay = new Date(currentYear, currentMonthIndex + 1, 0);
         const startDay = firstDay.getDay();
         const totalDays = lastDay.getDate();
 
-        const card = document.createElement("article");
-        card.className = "calendar-card";
-
-        const header = document.createElement("div");
-        header.className = "calendar-header";
-
-        const title = document.createElement("h3");
-        title.textContent = monthNames[monthIndex];
-
-        const yearLabel = document.createElement("span");
-        yearLabel.textContent = currentYear;
-
-        header.appendChild(title);
-        header.appendChild(yearLabel);
-        card.appendChild(header);
-
-        const grid = document.createElement("div");
-        grid.className = "calendar-grid";
-
-        ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach((day) => {
-          const label = document.createElement("div");
-          label.className = "calendar-weekday";
-          label.textContent = day;
-          grid.appendChild(label);
-        });
+        while (calendarGrid.children.length > 7) {
+          calendarGrid.removeChild(calendarGrid.lastChild);
+        }
 
         for (let i = 0; i < startDay; i += 1) {
-          grid.appendChild(createDayCell("—", true));
+          calendarGrid.appendChild(createDayCell("—", true));
         }
 
         for (let day = 1; day <= totalDays; day += 1) {
-          const isHighlight = monthIndex === 5 && day === 17;
-          grid.appendChild(createDayCell(day, false, isHighlight));
+          const monthKey = currentMonthIndex + 1;
+          const dayEvents = events[monthKey]?.[day] ?? [];
+          const isHighlight = monthKey === 6 && day === 17;
+          calendarGrid.appendChild(createDayCell(day, false, isHighlight, dayEvents));
         }
 
         const totalCells = startDay + totalDays;
         const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
         for (let i = 0; i < remainingCells; i += 1) {
-          grid.appendChild(createDayCell("—", true));
+          calendarGrid.appendChild(createDayCell("—", true));
         }
-
-        card.appendChild(grid);
-        return card;
       };
 
-      monthNames.forEach((_, index) => {
-        monthsGrid.appendChild(createMonthCard(index));
+      prevMonthButton.addEventListener("click", () => {
+        currentMonthIndex = (currentMonthIndex - 1 + 12) % 12;
+        renderMonth();
       });
+
+      nextMonthButton.addEventListener("click", () => {
+        currentMonthIndex = (currentMonthIndex + 1) % 12;
+        renderMonth();
+      });
+
+      renderMonth();
 
       const targetDate = new Date(currentYear, 5, 17, 23, 59, 59);
       const daysEl = document.getElementById("days");
