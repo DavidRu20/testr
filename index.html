@@ -19,7 +19,8 @@
         --mist: #c7c2bc;
         --gold: #f0c56e;
         --gold-soft: rgba(240, 197, 110, 0.2);
-        --accent: #6b6bff;
+        --plum: #2f223a;
+        --glass: rgba(255, 255, 255, 0.06);
       }
 
       * {
@@ -99,8 +100,8 @@
       nav a {
         color: var(--mist);
         text-decoration: none;
-        margin-left: 28px;
-        font-size: 0.95rem;
+        margin-left: 26px;
+        font-size: 0.9rem;
         text-transform: uppercase;
         letter-spacing: 2px;
         transition: color 0.3s ease;
@@ -128,20 +129,30 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 48px;
-        padding: 80px 7vw 60px;
+        padding: 90px 7vw 50px;
         align-items: center;
       }
 
       .hero h2 {
         font-family: "Playfair Display", serif;
-        font-size: clamp(2.8rem, 4vw, 4rem);
-        line-height: 1.1;
+        font-size: clamp(2.8rem, 4vw, 4.2rem);
+        line-height: 1.05;
       }
 
       .hero p {
         margin-top: 24px;
         color: var(--mist);
         max-width: 520px;
+      }
+
+      .pill {
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        color: var(--mist);
       }
 
       .cta-row {
@@ -179,31 +190,31 @@
         transform: translateY(-2px);
       }
 
-      .showcase {
-        border-radius: 24px;
-        background: linear-gradient(135deg, rgba(20, 20, 30, 0.9), rgba(10, 10, 15, 0.9));
+      .hero-card {
+        border-radius: 28px;
         padding: 32px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(140deg, rgba(20, 20, 30, 0.9), rgba(12, 12, 18, 0.92));
+        border: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+        display: grid;
+        gap: 20px;
         transition: transform 0.4s ease, box-shadow 0.4s ease;
       }
 
-      .showcase:hover {
+      .hero-card:hover {
         transform: translateY(-6px);
         box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
       }
 
-      .showcase h3 {
+      .hero-card h3 {
         font-family: "Playfair Display", serif;
-        font-size: 1.5rem;
-        margin-bottom: 16px;
+        font-size: 1.4rem;
       }
 
       .metrics {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 18px;
-        margin-top: 24px;
       }
 
       .metric {
@@ -227,8 +238,60 @@
         color: var(--gold);
       }
 
+      .split {
+        margin: 40px 7vw 0;
+        padding: 40px;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.04);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 28px;
+      }
+
+      .split h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .split p {
+        color: var(--mist);
+      }
+
+      .spotlight {
+        padding: 60px 7vw 40px;
+        display: grid;
+        gap: 24px;
+      }
+
+      .spotlight-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
+      }
+
+      .spotlight-card {
+        border-radius: 20px;
+        padding: 22px;
+        background: linear-gradient(140deg, rgba(47, 34, 58, 0.9), rgba(12, 12, 18, 0.95));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .spotlight-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      }
+
+      .spotlight-card span {
+        color: var(--gold);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.75rem;
+      }
+
       .strip {
-        margin: 0 7vw;
+        margin: 20px 7vw 0;
         padding: 32px 40px;
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.04);
@@ -247,26 +310,6 @@
 
       .strip p {
         color: var(--mist);
-      }
-
-      .pill {
-        padding: 10px 18px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        text-transform: uppercase;
-        font-size: 0.75rem;
-        letter-spacing: 2px;
-      }
-
-      footer {
-        margin-top: auto;
-        padding: 40px 7vw;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 16px;
-        color: var(--mist);
-        font-size: 0.85rem;
       }
 
       .scroll-cue {
@@ -323,6 +366,17 @@
         transform: translateY(0);
       }
 
+      footer {
+        margin-top: auto;
+        padding: 40px 7vw;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        color: var(--mist);
+        font-size: 0.85rem;
+      }
+
       @media (max-width: 700px) {
         nav {
           display: none;
@@ -361,14 +415,14 @@
           </p>
           <div class="cta-row">
             <a class="btn primary" href="calendar.html">School Calendar</a>
-            <button class="btn ghost">Explore Programs</button>
+            <a class="btn ghost" href="shop.html">Campus Store</a>
           </div>
           <div class="scroll-cue">
             <span aria-hidden="true"></span>
             Scroll for more
           </div>
         </div>
-        <div class="showcase reveal" id="academics">
+        <div class="hero-card" id="academics">
           <h3>Signature Experiences</h3>
           <p>
             Honors pathways, STEM labs, and creative studios designed for ambitious learners.
@@ -391,19 +445,64 @@
         </div>
       </section>
 
-      <section class="strip reveal" id="student-life">
+      <section class="split reveal" id="student-life">
         <div>
           <h3>Student Life, Curated</h3>
-          <p>Leadership councils, championship athletics, and arts that light up the city.</p>
+          <p>
+            Leadership councils, championship athletics, and arts that light up the city—supported
+            by modern studios and a student-centered campus.
+          </p>
         </div>
-          <div class="pill" id="community">Proudly public, proudly Auburn</div>
-          <button class="btn ghost" id="news">View the Highlights</button>
-        </section>
+        <div>
+          <h3>Whole-Community Support</h3>
+          <p>
+            Family engagement nights, wellness services, and enrichment programs keep Auburn families
+            connected year-round.
+          </p>
+        </div>
+        <div>
+          <h3>Future-Ready Pathways</h3>
+          <p>
+            Dual enrollment, internships, and career exploration built in partnership with local
+            employers and colleges.
+          </p>
+        </div>
+      </section>
 
-        <footer class="reveal">
-          <div>148 Auburn Street · Auburn, MA</div>
-          <div>Connect with info@auburnhsma.edu</div>
-        </footer>
+      <section class="spotlight reveal" id="news">
+        <h3>Community Spotlight</h3>
+        <div class="spotlight-grid">
+          <article class="spotlight-card">
+            <span>Innovation</span>
+            <h4>New STEAM studio opens this fall</h4>
+            <p>Design labs, media suites, and collaborative maker spaces for every learner.</p>
+          </article>
+          <article class="spotlight-card">
+            <span>Recognition</span>
+            <h4>Statewide arts finalists announced</h4>
+            <p>Celebrate Auburn students recognized for design, music, and performance.</p>
+          </article>
+          <article class="spotlight-card">
+            <span>Athletics</span>
+            <h4>Unified teams win regional honors</h4>
+            <p>Inclusive programs and championship teams across seasons.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="strip reveal" id="community">
+        <div>
+          <h3>Proudly public, proudly Auburn</h3>
+          <p>Transparent, tuition-free, and grounded in community partnership.</p>
+        </div>
+        <div class="pill">Since 1935</div>
+        <a class="btn ghost" href="shop.html">View the Highlights</a>
+      </section>
+
+      <footer class="reveal">
+        <div>148 Auburn Street · Auburn, MA</div>
+        <div>Connect with info@auburnhsma.edu</div>
+      </footer>
     </div>
     <script>
       const revealTargets = document.querySelectorAll(".reveal");

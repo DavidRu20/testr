@@ -18,6 +18,7 @@
         --moon: #f4f2ef;
         --mist: #c7c2bc;
         --gold: #f0c56e;
+        --glass: rgba(255, 255, 255, 0.06);
       }
 
       * {
@@ -96,12 +97,17 @@
       main {
         padding: 40px 7vw 80px;
         display: grid;
-        gap: 40px;
+        gap: 48px;
       }
 
       .hero {
+        padding: 40px;
+        border-radius: 28px;
+        background: linear-gradient(150deg, rgba(20, 20, 30, 0.96), rgba(10, 10, 15, 0.96));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
         display: grid;
-        gap: 16px;
+        gap: 18px;
       }
 
       .hero h2 {
@@ -198,7 +204,7 @@
 
       .product-image {
         border-radius: 18px;
-        height: 160px;
+        height: 170px;
         background: linear-gradient(140deg, rgba(240, 197, 110, 0.35), rgba(255, 255, 255, 0.06));
         border: 1px solid rgba(240, 197, 110, 0.25);
       }
@@ -225,6 +231,44 @@
         text-transform: uppercase;
         letter-spacing: 2px;
         font-size: 0.7rem;
+        transition: transform 0.3s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .lookbook {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .lookbook-card {
+        border-radius: 22px;
+        padding: 22px;
+        background: linear-gradient(130deg, rgba(47, 34, 58, 0.9), rgba(12, 12, 18, 0.95));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: grid;
+        gap: 12px;
+      }
+
+      .lookbook-card span {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.75rem;
+        color: var(--gold);
+      }
+
+      .cta-strip {
+        padding: 26px 32px;
+        border-radius: 999px;
+        background: var(--glass);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
       }
 
       footer {
@@ -240,6 +284,10 @@
       @media (max-width: 700px) {
         nav {
           display: none;
+        }
+
+        .cta-strip {
+          border-radius: 24px;
         }
       }
     </style>
@@ -262,7 +310,7 @@
         <div class="pill-row">
           <div class="pill">Spirit Wear</div>
           <div class="pill">Campus Store</div>
-          <div class="pill">Community Support</div>
+          <div class="pill">Limited Drops</div>
         </div>
         <h2>Shop the Auburn High essentials.</h2>
         <p>
@@ -335,6 +383,38 @@
             </div>
           </article>
         </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <h3>Lookbook</h3>
+          <a class="link" href="#">Seasonal edit</a>
+        </div>
+        <div class="lookbook">
+          <article class="lookbook-card">
+            <span>Studio Set</span>
+            <h4>Layered neutrals for campus mornings.</h4>
+            <p>Mix varsity textures with minimal accessories.</p>
+          </article>
+          <article class="lookbook-card">
+            <span>Friday Lights</span>
+            <h4>Game-day essentials curated for fans.</h4>
+            <p>Scarves, caps, and stadium-ready kits.</p>
+          </article>
+          <article class="lookbook-card">
+            <span>Heritage Drop</span>
+            <h4>Limited alumni collection, reissued.</h4>
+            <p>Classic Auburn gold with a modern cut.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta-strip">
+        <div>
+          <h4>Support student programs with every purchase.</h4>
+          <p>Need help? The campus store team is here Monday–Friday.</p>
+        </div>
+        <button class="btn">Contact the store</button>
       </section>
     </main>
 
