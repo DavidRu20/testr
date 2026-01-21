@@ -112,21 +112,18 @@
         max-width: 560px;
       }
 
-      .pill {
-        padding: 8px 16px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        text-transform: uppercase;
-        font-size: 0.7rem;
-        letter-spacing: 2px;
-        color: var(--mist);
-        width: fit-content;
-      }
-
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
         gap: 16px;
+      }
+
+      .hero-image {
+        border-radius: 28px;
+        min-height: 380px;
+        background: linear-gradient(140deg, rgba(240, 197, 110, 0.35), rgba(255, 255, 255, 0.04));
+        border: 1px solid rgba(240, 197, 110, 0.2);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
       }
 
       .btn {
@@ -149,36 +146,6 @@
 
       .btn:hover {
         transform: translateY(-2px);
-      }
-
-      .lookbook-grid {
-        padding: 50px 7vw;
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      }
-
-      .lookbook-card {
-        border-radius: 24px;
-        min-height: 240px;
-        padding: 24px;
-        background: linear-gradient(150deg, rgba(18, 18, 26, 0.9), rgba(47, 34, 58, 0.95));
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        display: grid;
-        align-content: space-between;
-        transition: transform 0.35s ease, box-shadow 0.35s ease;
-      }
-
-      .lookbook-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-      }
-
-      .lookbook-card span {
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 0.7rem;
-        color: var(--gold);
       }
 
       .section-title {
@@ -250,6 +217,17 @@
         align-items: center;
       }
 
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       footer {
         padding: 40px 7vw;
         color: var(--mist);
@@ -272,7 +250,7 @@
     </style>
   </head>
   <body>
-    <header>
+    <header class="reveal">
       <div class="brand">
         <div class="crest">AHS</div>
         <h1>Auburn High School, MA</h1>
@@ -284,49 +262,24 @@
       </nav>
     </header>
 
-    <section class="hero">
-      <span class="pill">Campus Store</span>
-      <h2>Editorial drops, campus essentials.</h2>
-      <p>
-        A Zara-inspired storefront for Auburn High—sleek collections, minimal layouts, and a
-        curated campus edit supporting student programs.
-      </p>
+    <section class="hero reveal">
+      <h2>Campus Store</h2>
+      <p>Minimal edits, refined essentials, and clean silhouettes.</p>
       <div class="hero-actions">
-        <button class="btn primary">Shop new arrivals</button>
-        <button class="btn">View lookbook</button>
+        <button class="btn primary">Shop new</button>
+        <button class="btn">Browse all</button>
       </div>
+      <div class="hero-image" aria-hidden="true"></div>
     </section>
 
-    <div class="section-title">
-      <h3>Lookbook</h3>
-      <a href="#">Seasonal edit</a>
-    </div>
-    <section class="lookbook-grid">
-      <article class="lookbook-card">
-        <span>Studio Set</span>
-        <h4>Layered neutrals for campus mornings.</h4>
-        <p>Mix varsity textures with minimal accessories.</p>
-      </article>
-      <article class="lookbook-card">
-        <span>Friday Lights</span>
-        <h4>Game-day essentials curated for fans.</h4>
-        <p>Scarves, caps, and stadium-ready kits.</p>
-      </article>
-      <article class="lookbook-card">
-        <span>Heritage Drop</span>
-        <h4>Limited alumni collection, reissued.</h4>
-        <p>Classic Auburn gold with a modern cut.</p>
-      </article>
-    </section>
-
-    <div class="section-title">
+    <div class="section-title reveal">
       <h3>Featured picks</h3>
       <a href="#">View all</a>
     </div>
-    <section class="product-grid">
+    <section class="product-grid reveal">
       <article class="product-tile">
         <div class="product-image"></div>
-        <h4>Midnight Crest Hoodie</h4>
+        <h4>Hoodie</h4>
         <div class="product-meta">
           <span>$52</span>
           <span>Limited</span>
@@ -334,7 +287,7 @@
       </article>
       <article class="product-tile">
         <div class="product-image"></div>
-        <h4>Studio Tote + Sleeve</h4>
+        <h4>Tote</h4>
         <div class="product-meta">
           <span>$34</span>
           <span>New</span>
@@ -342,7 +295,7 @@
       </article>
       <article class="product-tile">
         <div class="product-image"></div>
-        <h4>Championship Cap</h4>
+        <h4>Cap</h4>
         <div class="product-meta">
           <span>$24</span>
           <span>Restock</span>
@@ -350,7 +303,7 @@
       </article>
       <article class="product-tile">
         <div class="product-image"></div>
-        <h4>Gold Foil Yearbook</h4>
+        <h4>Yearbook</h4>
         <div class="product-meta">
           <span>$75</span>
           <span>Preorder</span>
@@ -358,7 +311,7 @@
       </article>
     </section>
 
-    <section class="cta-strip">
+    <section class="cta-strip reveal">
       <div>
         <h4>Support student programs with every purchase.</h4>
         <p>Need help? The campus store team is here Monday–Friday.</p>
@@ -366,9 +319,26 @@
       <button class="btn">Contact the store</button>
     </section>
 
-    <footer>
+    <footer class="reveal">
       <div>148 Auburn Street · Auburn, MA</div>
       <div>Storefront open weekdays · shop@auburnhsma.edu</div>
     </footer>
+
+    <script>
+      const revealTargets = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      revealTargets.forEach((target) => revealObserver.observe(target));
+    </script>
   </body>
 </html>
