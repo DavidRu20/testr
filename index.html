@@ -137,6 +137,44 @@
         max-width: 560px;
       }
 
+      .hero-top {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .hero-kicker {
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--mist);
+      }
+
+      .hero-divider {
+        width: 40px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .hero-details {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 16px;
+      }
+
+      .detail-card {
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.7rem;
+        color: var(--mist);
+      }
+
       .hero h2 {
         font-family: "Playfair Display", serif;
         font-size: clamp(2.8rem, 4vw, 4.2rem);
@@ -435,7 +473,11 @@
 
       <section class="hero reveal">
         <div class="hero-content reveal">
-          <div class="pill">Auburn, Massachusetts</div>
+          <div class="hero-top">
+            <div class="pill">Auburn, Massachusetts</div>
+            <div class="hero-divider"></div>
+            <div class="hero-kicker">Public School</div>
+          </div>
           <h2>Elevated learning, tailored for tomorrow.</h2>
           <p>
             Auburn High School blends academic excellence with a boutique feel—immersive programs,
@@ -444,6 +486,11 @@
           <div class="cta-row">
             <a class="btn primary" href="calendar.html">School Calendar</a>
             <a class="btn ghost" href="shop.html">Campus Store</a>
+          </div>
+          <div class="hero-details">
+            <div class="detail-card">Academic excellence</div>
+            <div class="detail-card">Student support</div>
+            <div class="detail-card">Community spirit</div>
           </div>
           <div class="scroll-cue">
             <span aria-hidden="true"></span>
