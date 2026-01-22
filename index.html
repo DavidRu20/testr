@@ -127,10 +127,14 @@
 
       .hero {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 48px;
-        padding: 90px 7vw 50px;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 56px;
+        padding: 90px 7vw 40px;
         align-items: center;
+      }
+
+      .hero-content {
+        max-width: 560px;
       }
 
       .hero h2 {
@@ -258,8 +262,28 @@
         color: var(--mist);
       }
 
+      .section-title {
+        margin: 60px 7vw 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .section-title h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+      }
+
+      .section-title span {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.7rem;
+        color: var(--mist);
+      }
+
       .spotlight {
-        padding: 60px 7vw 40px;
+        padding: 30px 7vw 40px;
         display: grid;
         gap: 24px;
       }
@@ -382,6 +406,10 @@
           display: none;
         }
 
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
         .strip {
           border-radius: 24px;
         }
@@ -406,7 +434,7 @@
       </header>
 
       <section class="hero reveal">
-        <div class="reveal">
+        <div class="hero-content reveal">
           <div class="pill">Auburn, Massachusetts</div>
           <h2>Elevated learning, tailored for tomorrow.</h2>
           <p>
@@ -445,6 +473,10 @@
         </div>
       </section>
 
+      <div class="section-title reveal">
+        <h3>Inside Auburn</h3>
+        <span>Community & campus</span>
+      </div>
       <section class="split reveal" id="student-life">
         <div>
           <h3>Student Life, Curated</h3>
@@ -469,8 +501,11 @@
         </div>
       </section>
 
-      <section class="spotlight reveal" id="news">
+      <div class="section-title reveal">
         <h3>Now on Display</h3>
+        <span>Editorial filler</span>
+      </div>
+      <section class="spotlight reveal" id="news">
         <div class="spotlight-grid">
           <article class="spotlight-card">
             <span>Feature</span>
