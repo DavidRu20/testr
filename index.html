@@ -409,6 +409,46 @@
         font-size: 0.75rem;
       }
 
+      .contact-section {
+        padding: 60px 7vw 40px;
+        display: grid;
+        gap: 24px;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
+      }
+
+      .contact-card {
+        border-radius: 22px;
+        padding: 24px;
+        background: linear-gradient(140deg, rgba(10, 18, 40, 0.92), rgba(6, 10, 24, 0.96));
+        border: 1px solid rgba(134, 177, 255, 0.18);
+        box-shadow: 0 26px 60px rgba(5, 10, 24, 0.5);
+        display: grid;
+        gap: 12px;
+      }
+
+      .contact-card h4 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+      }
+
+      .contact-card span {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.7rem;
+        color: var(--mist);
+      }
+
+      .contact-card a {
+        color: var(--ice-blue);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
       .strip {
         margin: 20px 7vw 0;
         padding: 32px 40px;
@@ -629,6 +669,55 @@
             <span>Gallery</span>
             <h4>Seasonal palettes and soft motion</h4>
             <p>Subtle animation, clean spacing, and refined polish.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact-section reveal" id="contacts">
+        <div class="section-title">
+          <h3>Contact Leadership</h3>
+          <span>Student council</span>
+        </div>
+        <div class="contact-grid">
+          <article class="contact-card">
+            <span>President</span>
+            <h4>Patrick</h4>
+            <div>
+              <strong>School:</strong>
+              <a href="mailto:pharoian28@auburn.k12.ma.us">pharoian28@auburn.k12.ma.us</a>
+            </div>
+          </article>
+          <article class="contact-card">
+            <span>Vice President</span>
+            <h4>Michael</h4>
+            <div>
+              <strong>School:</strong>
+              <a href="mailto:matiemo28@auburn.k12.ma.us">matiemo28@auburn.k12.ma.us</a>
+            </div>
+            <div>
+              <strong>Personal:</strong>
+              <a href="mailto:michaelatiemo54@gmail.com">michaelatiemo54@gmail.com</a>
+            </div>
+          </article>
+          <article class="contact-card">
+            <span>Treasurer</span>
+            <h4>David</h4>
+            <div>
+              <strong>School:</strong>
+              <a href="mailto:druco28@auburn.k12.ma.us">druco28@auburn.k12.ma.us</a>
+            </div>
+            <div>
+              <strong>Personal:</strong>
+              <a href="mailto:davidruco879@gmail.com">davidruco879@gmail.com</a>
+            </div>
+          </article>
+          <article class="contact-card">
+            <span>Secretary</span>
+            <h4>Matias</h4>
+            <div>
+              <strong>School:</strong>
+              <a href="mailto:mgonzalez28@auburn.k12.ma.us">mgonzalez28@auburn.k12.ma.us</a>
+            </div>
           </article>
         </div>
       </section>
