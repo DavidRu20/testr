@@ -107,6 +107,16 @@
         transition: color 0.3s ease;
       }
 
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      nav a {
+        margin-left: 0;
+      }
+
       nav a:hover {
         color: var(--moon);
       }
@@ -123,6 +133,50 @@
 
       nav a:hover::after {
         width: 100%;
+      }
+
+      .nav-more {
+        position: relative;
+      }
+
+      .nav-more summary {
+        list-style: none;
+        cursor: pointer;
+        color: var(--mist);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .nav-more summary::after {
+        content: "▾";
+        font-size: 0.8rem;
+      }
+
+      .nav-more[open] summary {
+        color: var(--moon);
+      }
+
+      .nav-menu {
+        position: absolute;
+        right: 0;
+        top: 28px;
+        background: rgba(12, 12, 18, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 16px;
+        display: grid;
+        gap: 12px;
+        min-width: 200px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+      }
+
+      .nav-menu a {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
       }
 
       .hero {
@@ -463,12 +517,17 @@
         </div>
         <nav>
           <a href="#academics">Academics</a>
-          <a href="#student-life">Student Life</a>
-          <a href="#community">Community</a>
           <a href="calendar.html">Calendar</a>
-          <a href="shop.html">Shop</a>
-          <a href="fundraisers.html">Fundraisers</a>
-          <a href="#news">News</a>
+          <details class="nav-more">
+            <summary>More</summary>
+            <div class="nav-menu">
+              <a href="#student-life">Student Life</a>
+              <a href="#community">Community</a>
+              <a href="shop.html">Shop</a>
+              <a href="fundraisers.html">Fundraisers</a>
+              <a href="#news">News</a>
+            </div>
+          </details>
         </nav>
       </header>
 
