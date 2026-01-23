@@ -118,24 +118,38 @@
       }
 
       .fundraiser-card {
-        border-radius: 22px;
-        padding: 22px;
+        border-radius: 26px;
+        padding: 28px;
         background: linear-gradient(150deg, rgba(12, 18, 36, 0.95), rgba(8, 12, 24, 0.95));
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+        border: 1px solid rgba(122, 167, 255, 0.16);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: grid;
         gap: 14px;
+        position: relative;
+        overflow: hidden;
       }
 
       .fundraiser-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+        transform: translateY(-6px);
+        box-shadow: 0 34px 80px rgba(0, 0, 0, 0.6);
+      }
+
+      .fundraiser-card::after {
+        content: "";
+        position: absolute;
+        inset: auto -40px -60px auto;
+        width: 140px;
+        height: 140px;
+        opacity: 0.12;
+        background-image: radial-gradient(circle at 30% 30%, rgba(122, 167, 255, 0.6), transparent 55%),
+          linear-gradient(140deg, rgba(122, 167, 255, 0.4), transparent);
+        transform: rotate(12deg);
       }
 
       .fundraiser-card h3 {
         font-family: "Playfair Display", serif;
-        font-size: 1.3rem;
+        font-size: 1.45rem;
       }
 
       .fundraiser-meta {
