@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auburn High School MA | Fundraisers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --black: #0b0b0f;
+        --ink: #12121a;
+        --moon: #f4f2ef;
+        --mist: #c7c2bc;
+        --gold: #f0c56e;
+        --glass: rgba(255, 255, 255, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--black);
+        color: var(--moon);
+        line-height: 1.6;
+        animation: page-fade 1s ease both;
+      }
+
+      @keyframes page-fade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      header {
+        padding: 28px 7vw 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .crest {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid var(--gold);
+        display: grid;
+        place-items: center;
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        color: var(--gold);
+        letter-spacing: 1px;
+      }
+
+      .brand h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
+      }
+
+      nav a {
+        color: var(--mist);
+        text-decoration: none;
+        margin-left: 28px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: var(--moon);
+      }
+
+      .hero {
+        padding: 70px 7vw 40px;
+        display: grid;
+        gap: 20px;
+      }
+
+      .hero h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.6rem, 4vw, 3.8rem);
+      }
+
+      .hero p {
+        color: var(--mist);
+        max-width: 560px;
+      }
+
+      .fundraiser-grid {
+        padding: 20px 7vw 60px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
+      }
+
+      .fundraiser-card {
+        border-radius: 22px;
+        padding: 22px;
+        background: linear-gradient(150deg, rgba(18, 18, 26, 0.95), rgba(10, 10, 15, 0.95));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: grid;
+        gap: 14px;
+      }
+
+      .fundraiser-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+      }
+
+      .fundraiser-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+      }
+
+      .fundraiser-meta {
+        display: grid;
+        gap: 6px;
+        font-size: 0.85rem;
+        color: var(--mist);
+      }
+
+      .fundraiser-meta span {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.7rem;
+        color: var(--gold);
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: var(--glass);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.65rem;
+        color: var(--mist);
+        width: fit-content;
+      }
+
+      .cta-strip {
+        margin: 0 7vw 60px;
+        padding: 24px 32px;
+        border-radius: 999px;
+        background: var(--glass);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+      }
+
+      footer {
+        padding: 40px 7vw;
+        color: var(--mist);
+        font-size: 0.85rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      @media (max-width: 700px) {
+        nav {
+          display: none;
+        }
+
+        .cta-strip {
+          border-radius: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <div class="crest">AHS</div>
+        <h1>Auburn High School, MA</h1>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="shop.html">Shop</a>
+        <a href="fundraisers.html">Fundraisers</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h2>Fundraisers</h2>
+      <p>
+        A curated view of our upcoming fundraising moments—organized by date and clearly marked
+        for planning.
+      </p>
+    </section>
+
+    <section class="fundraiser-grid">
+      <article class="fundraiser-card">
+        <h3>Chipotle</h3>
+        <div class="fundraiser-meta">
+          <span>Date</span>
+          <div>May 13, 2026</div>
+          <span>Time</span>
+          <div>4:00 PM – 8:00 PM</div>
+        </div>
+        <div class="status-pill">Scheduled</div>
+      </article>
+
+      <article class="fundraiser-card">
+        <h3>Candygrams</h3>
+        <div class="fundraiser-meta">
+          <span>Date</span>
+          <div>February 1 – February 13</div>
+          <span>Time</span>
+          <div>All day</div>
+        </div>
+        <div class="status-pill">Seasonal</div>
+      </article>
+
+      <article class="fundraiser-card">
+        <h3>DoubleGood Popcorn App</h3>
+        <div class="fundraiser-meta">
+          <span>Date</span>
+          <div>To be announced</div>
+          <span>Time</span>
+          <div>To be announced</div>
+        </div>
+        <div class="status-pill">Date pending</div>
+      </article>
+
+      <article class="fundraiser-card">
+        <h3>Chili's Fundraiser</h3>
+        <div class="fundraiser-meta">
+          <span>Date</span>
+          <div>To be announced</div>
+          <span>Time</span>
+          <div>To be announced</div>
+        </div>
+        <div class="status-pill">Date pending</div>
+      </article>
+    </section>
+
+    <section class="cta-strip">
+      <div>
+        <h4>Want to support the next fundraiser?</h4>
+        <p>Details and participation links will be shared as dates are finalized.</p>
+      </div>
+      <div class="status-pill">Stay tuned</div>
+    </section>
+
+    <footer>
+      <div>148 Auburn Street · Auburn, MA</div>
+      <div>Questions? info@auburnhsma.edu</div>
+    </footer>
+  </body>
+</html>
